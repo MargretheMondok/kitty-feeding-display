@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Feeder v1.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="landscape" class="landscape">
+      <div class="stage">
+        <section class="panel">
+          <div id="clock" class="clock">
+            <span id="clock-day" class="clock-day"></span>
+            <span id="clock-date" class="clock-date"></span>
+            <span id="clock-time" class="clock-time"></span>
+          </div>
+
+          <button id="feed-btn" type="button">Feed Kitty</button>
+
+          <div id="confirm" class="confirm" hidden>
+            <p class="confirm-q">Did you feed the kitty?</p>
+            <div class="confirm-actions">
+              <button id="confirm-yes" type="button">Yes, fed! 🐟</button>
+              <button id="confirm-no" type="button">Cancel</button>
+            </div>
+          </div>
+
+          <p id="status"></p>
+          <p id="since" class="since"></p>
+        </section>
+
+        <div id="kitty-wrap" class="kitty-wrap">
+          <img
+            id="kitty"
+            class="kitty"
+            src="images/kitty.png"
+            alt="A happy kitty"
+          />
+          <div id="hearts" class="hearts" aria-hidden="true"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

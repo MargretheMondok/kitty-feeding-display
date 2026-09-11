@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Fredoka", "Comic Sans MS", system-ui, sans-serif;
+  background: #000;
+}
+
+.landscape {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("images/beach.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+}
+
+.landscape.night {
+  background-image: url("images/sunset_beach.jpeg");
+}
+
+.stage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 3rem 3.5rem;
+  width: 400px;
+  font-variant-numeric: tabular-nums;
+  background: rgba(80, 220, 255, 0.432);
+  border: 3px solid #fdfffd;
+  border-radius: 28px;
+  color: #ffffff00;
+  text-align: center;
+}
+
+.landscape.night .panel {
+  background: rgba(242, 250, 255, 0.123);
+}
+
+.panel h1 {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.clock-day {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.clock-date {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.clock-time {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+#status {
+  font-size: 1.15rem;
+  font-weight: 600;
+  min-height: 1.3em;
+}
+
+.since {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  min-height: 1.2em;
+}
+
+#feed-btn {
+  font-family: inherit;
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding: 1.1rem 3.25rem;
+  background: #ffffff;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#feed-btn:hover {
+  background: #f5d3ff;
+}
+
+.confirm[hidden] {
+  display: none;
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.confirm-q {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.confirm-actions button {
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#confirm-yes {
+  background: #ffffff;
+  color: #000;
+}
+
+#confirm-yes:hover {
+  background: #d3ffd8;
+}
+
+#confirm-no {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+#confirm-no:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.kitty-wrap {
+  position: relative;
+  width: min(46vw, 520px);
+  height: min(46vw, 520px);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.kitty {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: filter 0.4s ease;
+}
+
+.kitty-wrap.is-fed .kitty {
+  filter: drop-shadow(0 0 16px #a200ff)
+    drop-shadow(0 0 42px rgba(124, 43, 255, 0.6));
+}
+
+.landscape.night .kitty-wrap.is-fed .kitty {
+  filter: drop-shadow(0 0 16px #ffffff)
+    drop-shadow(0 0 42px rgba(255, 255, 255, 0.6));
+}
+
+.hearts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10%;
+  height: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5rem;
+  animation: rise-heart 1.4s ease-out forwards;
+}
+
+@keyframes rise-heart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.4);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-180px) scale(1.1);
+  }
+}
+
+@media (max-width: 760px) {
+  .stage {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .panel {
+    width: 100%;
+    max-width: 520px;
+    padding: 2rem 1.5rem;
+  }
+
+  .clock-day {
+    font-size: 2rem;
+  }
+
+  .clock-date,
+  .clock-time {
+    font-size: 0.95rem;
+  }
+
+  .kitty-wrap {
+    width: min(70vw, 320px);
+    height: min(70vw, 320px);
+  }
+}

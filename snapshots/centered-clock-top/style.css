@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Fredoka", "Comic Sans MS", system-ui, sans-serif;
+  background: #000;
+}
+
+.landscape {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("images/beach.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Sit the stack a bit below center */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30vh;
+  padding-bottom: 6vh;
+}
+
+/* Night: 19:00–05:59 (class toggled by script.js) */
+.landscape.night {
+  background-image: url("images/sunset_beach.jpeg");
+}
+
+/* Button box on top, kitty below — centered */
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ---- The box ---- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem;
+  background: rgba(54, 181, 255, 0.7);
+  border: 2px solid #fdfffd;
+  border-radius: 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.panel h1 {
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+}
+
+/* Live date/time — top middle of the screen, outside the box */
+.clock {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  color: #ffffff;
+  font-family: "Fredoka", "Comic Sans MS", system-ui, sans-serif;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+
+.clock-day {
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.clock-rest {
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 640px) {
+  .clock {
+    max-width: 90vw;
+  }
+  .clock-day {
+    font-size: 2rem;
+  }
+  .clock-rest {
+    font-size: 0.9rem;
+  }
+}
+
+#status {
+  font-size: 1rem;
+}
+
+#feed-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  background: #ffffff;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#feed-btn:hover {
+  background: #e9a0ff;
+}
+
+/* ---- Kitty (static, on the sand) ---- */
+.kitty-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.kitty {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: filter 0.4s ease;
+}
+
+/* Kitty glows for 8 hours after being fed (class toggled by script.js) */
+.kitty-wrap.is-fed .kitty {
+  filter: drop-shadow(0 0 16px #ff7df9)
+    drop-shadow(0 0 42px rgba(255, 107, 230, 0.6));
+}
+
+/* ---- Hearts: rise straight up from the kitty ---- */
+.hearts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10%;
+  height: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5rem;
+  animation: rise-heart 1.4s ease-out forwards;
+}
+
+@keyframes rise-heart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.4);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-180px) scale(1.1);
+  }
+}
+
+/* ---- Small screens ---- */
+@media (max-width: 640px) {
+  .stage {
+    gap: 1.5rem;
+  }
+}
